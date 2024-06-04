@@ -57,10 +57,10 @@ class MenuScene extends Phaser.Scene
         frameWidth: 500,
         frameHeight: 500 ,
         });
-        this.load.image('fun', 'https://play.rosebud.ai/assets/TheFun.png?0zHQ');
-        this.load.image('flavor', 'https://play.rosebud.ai/assets/theflavor.png?h8V5');
-        this.load.image('culture', 'https://play.rosebud.ai/assets/theculture.png?zVeX');
-        this.load.image('magic', 'https://play.rosebud.ai/assets/themagic.png?c1Yq');
+        this.load.image('fun', 'https://play.rosebud.ai/assets/display-1.png?mLfI');
+        this.load.image('flavor', 'https://play.rosebud.ai/assets/display-2.png?FQgw');
+        this.load.image('culture', 'https://play.rosebud.ai/assets/display-3.png?22SN');
+        this.load.image('magic', 'hhttps://play.rosebud.ai/assets/display-4.png?BHKD');
         this.load.image('startButton', 'https://play.rosebud.ai/assets/enter the house.png?qPxJ');
         this.load.audio('bgMusic', 'https://play.rosebud.ai/assets/04 Grotto Groove.mp3?vOhH');
     }
@@ -78,7 +78,7 @@ class MenuScene extends Phaser.Scene
         });
 
         this.time.delayedCall(3000, () => {
-            const fun = this.add.image(640, 360, 'fun');
+            const fun = this.add.image(240, 260, 'fun');
             fun.alpha = 0;
             this.tweens.add({
                 targets: fun,
@@ -89,7 +89,7 @@ class MenuScene extends Phaser.Scene
         });
 
         this.time.delayedCall(5000, () => {
-            const flavor = this.add.image(640, 360, 'flavor');
+            const flavor = this.add.image(240, 360, 'flavor');
             flavor.alpha = 0;
             this.tweens.add({
                 targets: flavor,
@@ -100,7 +100,7 @@ class MenuScene extends Phaser.Scene
         });
 
         this.time.delayedCall(7000, () => {
-            const culture = this.add.image(640, 360, 'culture');
+            const culture = this.add.image(240, 460, 'culture');
             culture.alpha = 0;
             this.tweens.add({
                 targets: culture,
@@ -111,7 +111,7 @@ class MenuScene extends Phaser.Scene
         });
 
         this.time.delayedCall(9000, () => {
-            const magic = this.add.image(640, 360, 'magic');
+            const magic = this.add.image(640, 560, 'magic');
             magic.alpha = 0;
             this.tweens.add({
                 targets: magic,
