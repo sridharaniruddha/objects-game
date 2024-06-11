@@ -1,6 +1,7 @@
 class NewScene extends Phaser.Scene {
     constructor() {
         super('NewScene');
+        this.textBox = null; // Initialize textBox to null
     }
 
     preload() {
@@ -14,6 +15,7 @@ class NewScene extends Phaser.Scene {
         this.load.image('text2', 'https://play.rosebud.ai/assets/text-2.png?ZERe');
         this.load.image('text3', 'https://play.rosebud.ai/assets/text-3.png?Ji7w');
         this.load.image('hall', 'https://play.rosebud.ai/assets/isometric-living-room.png?5tUE');
+        this.load.image('close', 'https://play.rosebud.ai/assets/close.png?gcOI');
     }
 
     create() {
@@ -77,50 +79,71 @@ class NewScene extends Phaser.Scene {
             hall.setScale(0.8); // reduce the size of 'hall' by 20%
         });
 
-        this.time.delayedCall(13000, () =>{
+        this.time.delayedCall(13000, () => {
+            const close = this.add.image(700, 100, 'close'); // Adding the close button
+            close.setScale(0.5);
+            close.setInteractive(); // Make the close button interactive
+            close.on('pointerdown', () => { // When the close button is clicked
+                this.closeTextBox(); // Close any open text box
+            });
+        });
+
+        this.time.delayedCall(13000, () => {
             const globe = this.add.image(400, 300, 'globe');
             globe.setInteractive(); // make globe clickable
             globe.setScale(0.2);
             globe.on('pointerdown', () => { // when globe is clicked
-                const textBox = this.add.text(50, 50, 'You clicked the uniform!', { color: '#FFFFFF', fontSize: '20px' }); // create a textbox
+                this.closeTextBox(); // Close any existing text box
+                this.textBox = this.add.text(50, 50, 'You clicked the globe!', { color: '#FFFFFF', fontSize: '20px' }); // create a text box
             });
         })
-        
-        this.time.delayedCall(13000, () =>{
+
+        this.time.delayedCall(13000, () => {
             const uniform = this.add.image(200, 350, 'uniform');
             uniform.setInteractive(); // make uniform clickable
             uniform.setScale(0.2);
             uniform.on('pointerdown', () => { // when uniform is clicked
-                const textBox = this.add.text(50, 50, 'You clicked the uniform!', { color: '#FFFFFF', fontSize: '20px' }); // create a textbox
+                this.closeTextBox(); // Close any existing text box
+                this.textBox = this.add.text(50, 50, 'You clicked the uniform!', { color: '#FFFFFF', fontSize: '20px' }); // create a text box
             });
         })
 
-        this.time.delayedCall(13000, () =>{
+        this.time.delayedCall(13000, () => {
             const player = this.add.image(400, 300, 'player');
             player.setInteractive(); // make record player clickable
             player.setScale(0.2);
             player.on('pointerdown', () => { // when player is clicked
-                const textBox = this.add.text(50, 50, 'You clicked the uniform!', { color: '#FFFFFF', fontSize: '20px' }); // create a textbox
+                this.closeTextBox(); // Close any existing text box
+                this.textBox = this.add.text(50, 50, 'You clicked the record player!', { color: '#FFFFFF', fontSize: '20px' }); // create a text box
             });
         })
 
-        this.time.delayedCall(13000, () =>{
+        this.time.delayedCall(13000, () => {
             const piano = this.add.image(400, 300, 'piano');
             piano.setInteractive(); //make piano clickable
             piano.setScale(0.2);
             piano.on('pointerdown', () => { // when piano is clicked
-                const textBox = this.add.text(50, 50, 'You clicked the uniform!', { color: '#FFFFFF', fontSize: '20px' }); // create a textbox
+                this.closeTextBox(); // Close any existing text box
+                this.textBox = this.add.text(50, 50, 'You clicked the piano!', { color: '#FFFFFF', fontSize: '20px' }); // create a text box
             });
         })
 
-        this.time.delayedCall(13000, () =>{
+        this.time.delayedCall(13000, () => {
             const trunk = this.add.image(400, 300, 'trunk');
             trunk.setInteractive(); //make trunk clickable
             trunk.setScale(0.2);
             trunk.on('pointerdown', () => { // when trunk is clicked
-                const textBox = this.add.text(50, 50, 'You clicked the uniform!', { color: '#FFFFFF', fontSize: '20px' }); // create a textbox
+                this.closeTextBox(); // Close any existing text box
+                this.textBox = this.add.text(50, 50, 'You clicked the trunk!', { color: '#FFFFFF', fontSize: '20px' }); // create a text box
             });
         })
+    }
+
+    closeTextBox() {
+        if (this.textBox) {
+            this.textBox.destroy(); // Destroy the existing text box
+            this.textBox = null; // Reset textBox to null
+        }
     }
 }
 
@@ -140,7 +163,7 @@ class Example extends Phaser.Scene {
         const building = this.add.image(400, 300, 'building'); // Adding the building to the scene
         building.setScale(0.85); // reduce the size of 'building' by 15%
 
-        const enter = this.add.image(400,300, 'enter');
+        const enter = this.add.image(400, 300, 'enter');
 
         const particles = this.add.particles('red');
         const emitter = particles.createEmitter({
