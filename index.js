@@ -79,7 +79,11 @@ class NewScene extends Phaser.Scene {
 
         this.time.delayedCall(13000, () =>{
             const globe = this.add.image(400, 300, 'globe');
+            globe.setInteractive(); // make globe clickable
             globe.setScale(0.2);
+            globe.on('pointerdown', () => { // when globe is clicked
+                const textBox = this.add.text(50, 50, 'You clicked the uniform!', { color: '#FFFFFF', fontSize: '20px' }); // create a textbox
+            });
         })
         
         this.time.delayedCall(13000, () =>{
@@ -87,23 +91,35 @@ class NewScene extends Phaser.Scene {
             uniform.setInteractive(); // make uniform clickable
             uniform.setScale(0.2);
             uniform.on('pointerdown', () => { // when uniform is clicked
-                const textBox = this.add.text(50, 50, 'You clicked the uniform!', { color: '#000000', fontSize: '20px' }); // create a textbox
+                const textBox = this.add.text(50, 50, 'You clicked the uniform!', { color: '#FFFFFF', fontSize: '20px' }); // create a textbox
             });
         })
 
         this.time.delayedCall(13000, () =>{
             const player = this.add.image(400, 300, 'player');
+            player.setInteractive(); // make record player clickable
             player.setScale(0.2);
+            player.on('pointerdown', () => { // when player is clicked
+                const textBox = this.add.text(50, 50, 'You clicked the uniform!', { color: '#FFFFFF', fontSize: '20px' }); // create a textbox
+            });
         })
 
         this.time.delayedCall(13000, () =>{
             const piano = this.add.image(400, 300, 'piano');
+            piano.setInteractive(); //make piano clickable
             piano.setScale(0.2);
+            piano.on('pointerdown', () => { // when piano is clicked
+                const textBox = this.add.text(50, 50, 'You clicked the uniform!', { color: '#FFFFFF', fontSize: '20px' }); // create a textbox
+            });
         })
 
         this.time.delayedCall(13000, () =>{
             const trunk = this.add.image(400, 300, 'trunk');
+            trunk.setInteractive(); //make trunk clickable
             trunk.setScale(0.2);
+            trunk.on('pointerdown', () => { // when trunk is clicked
+                const textBox = this.add.text(50, 50, 'You clicked the uniform!', { color: '#FFFFFF', fontSize: '20px' }); // create a textbox
+            });
         })
     }
 }
