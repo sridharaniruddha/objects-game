@@ -54,8 +54,8 @@ class MenuScene extends Phaser.Scene
     {
         this.load.image('background', 'https://play.rosebud.ai/assets/modern isometric london flat.png?bgn3');
         this.load.image('freddie', 'https://play.rosebud.ai/assets/freddie-mercury.png?iMoH', { 
-        frameWidth: 150,
-        frameHeight: 20
+        frameWidth: 800,
+        frameHeight: 400
         });
         this.load.image('fun', 'https://play.rosebud.ai/assets/display-1.png?bBl6');
         this.load.image('flavor', 'https://play.rosebud.ai/assets/display-2.png?4W18');
@@ -69,7 +69,7 @@ class MenuScene extends Phaser.Scene
     {
         this.add.image(640, 360, 'background');
 
-        const freddie = this.add.image(640, 360, 'freddie',);
+        const freddie = this.add.image(640, 360,   'freddie',);
         freddie.alpha = 0;
         this.tweens.add({
             targets: freddie,
@@ -152,7 +152,7 @@ class IntroScene extends Phaser.Scene
     {
         this.load.image('text1', 'https://play.rosebud.ai/assets/text-1.png?zXsU');
         this.load.image('text2', 'https://play.rosebud.ai/assets/text-2.png?ZERe');
-        this.load.image('text3', 'https://play.rosebud.ai/assets/warning3.png?dR0t');
+        this.load.image('text3', 'https://play.rosebud.ai/assets/text-3.png?Ji7w');
     }
 
     create ()
