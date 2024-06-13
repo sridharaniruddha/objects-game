@@ -5,15 +5,22 @@ class DoorScene extends Phaser.Scene {
 
     preload() {
         // Load any assets for the scene here
+        this.load.image('backHouse', 'https://play.rosebud.ai/assets/back-house.png?yTST');
     }
 
     create() {
         // Create game objects for the scene here
-        const background = this.add.rectangle(0, 0, 800, 600, 0x000000); // Add a black background
-        const text = this.add.text(400, 300, 'You entered the door!', { color: '#FFFFFF', fontSize: '32px' }).setOrigin(0.5); // Add some text
+        const backHouse = this.add.image(100, 200, 'backHouse');
+        backHouse.setScale(0.1);
+        backHouse.setInteractive(); // Make the house interactive
+            backHouse.on('pointerdown', () => {
+                this.scene.start('NewScene'); // Switch to the previous scene when the house is clicked
+            })
+        
+
+
     }
 }
-
 
 class NewScene extends Phaser.Scene {
     constructor() {
@@ -97,7 +104,7 @@ class NewScene extends Phaser.Scene {
             hall.setScale(0.8); // reduce the size of 'hall' by 20%
         });
 
-        this.time.delayedCall(13000, () =>{
+        this.time.delayedCall(13000, () => {
             const door = this.add.image(700, 500, 'door');
             door.setScale(0.1);
             door.setInteractive(); // Make the door interactive
@@ -116,7 +123,7 @@ class NewScene extends Phaser.Scene {
         });
 
         this.time.delayedCall(13000, () => {
-            const globe = this.add.image(450, 360, 'globe');
+            const globe = this.add.image(450, 420, 'globe');
             globe.setInteractive(); // make globe clickable
             globe.setScale(0.2);
             globe.on('pointerdown', () => { // when globe is clicked
@@ -126,7 +133,7 @@ class NewScene extends Phaser.Scene {
         })
 
         this.time.delayedCall(13000, () => {
-            const uniform = this.add.image(200, 350, 'uniform');
+            const uniform = this.add.image(220, 360, 'uniform');
             uniform.setInteractive(); // make uniform clickable
             uniform.setScale(0.2);
             uniform.on('pointerdown', () => { // when uniform is clicked
@@ -136,7 +143,7 @@ class NewScene extends Phaser.Scene {
         })
 
         this.time.delayedCall(13000, () => {
-            const player = this.add.image(420, 320, 'player');
+            const player = this.add.image(320, 220, 'player');
             player.setInteractive(); // make record player clickable
             player.setScale(0.2);
             player.on('pointerdown', () => { // when player is clicked
@@ -146,7 +153,7 @@ class NewScene extends Phaser.Scene {
         })
 
         this.time.delayedCall(13000, () => {
-            const piano = this.add.image(250, 350, 'piano');
+            const piano = this.add.image(280, 350, 'piano');
             piano.setInteractive(); //make piano clickable
             piano.setScale(0.2);
             piano.on('pointerdown', () => { // when piano is clicked
@@ -156,9 +163,9 @@ class NewScene extends Phaser.Scene {
         })
 
         this.time.delayedCall(13000, () => {
-            const trunk = this.add.image(400, 400, 'trunk');
+            const trunk = this.add.image(400, 500, 'trunk');
             trunk.setInteractive(); //make trunk clickable
-            trunk.setScale(0.2);
+            trunk.setScale(0.15);
             trunk.on('pointerdown', () => { // when trunk is clicked
                 this.closeTextBox(); // Close any existing text box
                 this.textBox = this.add.text(50, 50, `Freddie Mercury, born Farrokh Bulsara, and his family fled from Zanzibar to England in 1964 to escape the violence of the Zanzibar Revolution.\n\nAs political unrest and violence escalated, they sought refuge in London, where Freddie later attended school and began his path to becoming a legendary rock star.`, { color: '#FFFFFF', fontSize: '20px', wordWrap: { width: 500, useAdvancedWrap: true } }); // create a text box with paragraphs
@@ -237,7 +244,7 @@ const config = {
             gravity: { y: 200 }
         }
     },
-    scene: [Example, NewScene] // Include 'NewScene' in the list of scenes
+    scene: [Example, NewScene, DoorScene] // Include 'NewScene' and 'DoorScene' in the list of scenes
 };
 
 window.phaserGame = new Phaser.Game(config);
