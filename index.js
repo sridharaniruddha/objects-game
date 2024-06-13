@@ -1,3 +1,20 @@
+class DoorScene extends Phaser.Scene {
+    constructor() {
+        super('DoorScene');
+    }
+
+    preload() {
+        // Load any assets for the scene here
+    }
+
+    create() {
+        // Create game objects for the scene here
+        const background = this.add.rectangle(0, 0, 800, 600, 0x000000); // Add a black background
+        const text = this.add.text(400, 300, 'You entered the door!', { color: '#FFFFFF', fontSize: '32px' }).setOrigin(0.5); // Add some text
+    }
+}
+
+
 class NewScene extends Phaser.Scene {
     constructor() {
         super('NewScene');
@@ -16,6 +33,7 @@ class NewScene extends Phaser.Scene {
         this.load.image('text3', 'https://play.rosebud.ai/assets/text-3.png?Ji7w');
         this.load.image('hall', 'https://play.rosebud.ai/assets/isometric-living-room.png?5tUE');
         this.load.image('close', 'https://play.rosebud.ai/assets/close.png?gcOI');
+        this.load.image('door', 'https://play.rosebud.ai/assets/open door.png?bmzS');
     }
 
     create() {
@@ -79,6 +97,15 @@ class NewScene extends Phaser.Scene {
             hall.setScale(0.8); // reduce the size of 'hall' by 20%
         });
 
+        this.time.delayedCall(13000, () =>{
+            const door = this.add.image(700, 500, 'door');
+            door.setScale(0.1);
+            door.setInteractive(); // Make the door interactive
+            door.on('pointerdown', () => {
+                this.scene.start('DoorScene'); // Switch to the DoorScene when the door is clicked
+            })
+        })
+
         this.time.delayedCall(13000, () => {
             const close = this.add.image(700, 100, 'close'); // Adding the close button
             close.setScale(0.5);
@@ -89,7 +116,7 @@ class NewScene extends Phaser.Scene {
         });
 
         this.time.delayedCall(13000, () => {
-            const globe = this.add.image(400, 300, 'globe');
+            const globe = this.add.image(450, 360, 'globe');
             globe.setInteractive(); // make globe clickable
             globe.setScale(0.2);
             globe.on('pointerdown', () => { // when globe is clicked
@@ -104,37 +131,37 @@ class NewScene extends Phaser.Scene {
             uniform.setScale(0.2);
             uniform.on('pointerdown', () => { // when uniform is clicked
                 this.closeTextBox(); // Close any existing text box
-                this.textBox = this.add.text(50, 50, 'You clicked the uniform!', { color: '#FFFFFF', fontSize: '20px' }); // create a text box
+                this.textBox = this.add.text(50, 50, `Freddie Mercury attended St. Peters School in Panchgani, India, where his musical talent blossomed despite the challenges of being away from his family.\n\nComing from a Parsi Indian background, he embraced his multicultural heritage and excelled in music, forming his first band, The Hectics, while at school. This period marked the beginning of his journey towards becoming an iconic rock musician.`, { color: '#FFFFFF', fontSize: '20px', wordWrap: { width: 500, useAdvancedWrap: true } }); // create a text box with paragraphs
             });
         })
 
         this.time.delayedCall(13000, () => {
-            const player = this.add.image(400, 300, 'player');
+            const player = this.add.image(420, 320, 'player');
             player.setInteractive(); // make record player clickable
             player.setScale(0.2);
             player.on('pointerdown', () => { // when player is clicked
                 this.closeTextBox(); // Close any existing text box
-                this.textBox = this.add.text(50, 50, 'You clicked the record player!', { color: '#FFFFFF', fontSize: '20px' }); // create a text box
+                this.textBox = this.add.text(50, 50, `Freddie Mercury's musical career skyrocketed as the charismatic frontman of Queen, renowned for his powerful voice and electrifying stage presence.\n\nHe wrote and performed numerous iconic hits, such as "Bohemian Rhapsody" and "We Are the Champions," cementing his legacy as a rock legend. His innovative approach to music and unforgettable performances continue to influence artists and captivate audiences worldwide.`, { color: '#FFFFFF', fontSize: '20px', wordWrap: { width: 500, useAdvancedWrap: true } }); // create a text box with paragraphs
             });
         })
 
         this.time.delayedCall(13000, () => {
-            const piano = this.add.image(400, 300, 'piano');
+            const piano = this.add.image(250, 350, 'piano');
             piano.setInteractive(); //make piano clickable
             piano.setScale(0.2);
             piano.on('pointerdown', () => { // when piano is clicked
                 this.closeTextBox(); // Close any existing text box
-                this.textBox = this.add.text(50, 50, 'You clicked the piano!', { color: '#FFFFFF', fontSize: '20px' }); // create a text box
+                this.textBox = this.add.text(50, 50, `Freddie Mercury's love for music and his classical training began at a young age in Zanzibar, where he started taking piano lessons.\n\nThis early musical foundation fostered his talent, eventually leading to his legendary career as the frontman of Queen.`, { color: '#FFFFFF', fontSize: '20px', wordWrap: { width: 500, useAdvancedWrap: true } }); // create a text box with paragraphs
             });
         })
 
         this.time.delayedCall(13000, () => {
-            const trunk = this.add.image(400, 300, 'trunk');
+            const trunk = this.add.image(400, 400, 'trunk');
             trunk.setInteractive(); //make trunk clickable
             trunk.setScale(0.2);
             trunk.on('pointerdown', () => { // when trunk is clicked
                 this.closeTextBox(); // Close any existing text box
-                this.textBox = this.add.text(50, 50, 'You clicked the trunk!', { color: '#FFFFFF', fontSize: '20px' }); // create a text box
+                this.textBox = this.add.text(50, 50, `Freddie Mercury, born Farrokh Bulsara, and his family fled from Zanzibar to England in 1964 to escape the violence of the Zanzibar Revolution.\n\nAs political unrest and violence escalated, they sought refuge in London, where Freddie later attended school and began his path to becoming a legendary rock star.`, { color: '#FFFFFF', fontSize: '20px', wordWrap: { width: 500, useAdvancedWrap: true } }); // create a text box with paragraphs
             });
         })
     }
